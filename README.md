@@ -10,6 +10,7 @@ Automated script to setup openvpn for Raspbian Jessie: https://github.com/Starsh
       4.To push dns server from openvpn to Ubuntu:http://serverfault.com/questions/528773/networkmanager-is-not-changing-etc-resolv-conf-after-openvpn-dns-push
       
 Install PI-HOLE https://pi-hole.net/
+      
       1. Change DNS servers away from GDNS: edit /etc/dnsmasq.d/01-pihole.conf and modify the server= values and then reload dnsmasq with this command: sudo service dnsmasq restart.
 
 
