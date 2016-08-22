@@ -7,7 +7,7 @@ Automated script to setup openvpn for Raspbian Jessie: https://github.com/Starsh
       1.Remove local <IP> line from /etc/openvpn/server.conf
       2.Change port in server.conf and in client.ovpn (OPTIONAL)
       3.Alter the push dchp command in server.conf to use the Pi/OPENNIC as DNS
-      4.To push dns server from openvpn to Ubuntu:http://serverfault.com/questions/528773/networkmanager-is-not-changing-etc-resolv-conf-after-openvpn-dns-push
+      4.To push dns server from openvpn to Ubuntu: http://serverfault.com/questions/528773/networkmanager-is-not-changing-etc-resolv-conf-after-openvpn-dns-push
       
 Install PI-HOLE https://pi-hole.net/
       
