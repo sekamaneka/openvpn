@@ -12,7 +12,7 @@ Automated script to setup openvpn for Raspbian Jessie: https://github.com/Starsh
       
 Install PI-HOLE https://pi-hole.net/
       
-      1. Change DNS servers away from GDNS: edit /etc/dnsmasq.d/01-pihole.conf and modify the server= values and then reload dnsmasq with this command: sudo service dnsmasq restart.
+      1. Change DNS servers away from GDNS: edit /etc/dnsmasq.d/01-pihole.conf and modify the server= values.
 
 
 
