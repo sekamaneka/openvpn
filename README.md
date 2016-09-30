@@ -13,6 +13,7 @@ Automated script to setup openvpn for Raspbian Jessie: https://github.com/Starsh
 Install PI-HOLE https://pi-hole.net/
       
       1. Change DNS servers away from GDNS: edit /etc/dnsmasq.d/01-pihole.conf and modify the server= values.
+      2. dhcp-range=192.168.0.20,192.168.0.50,72h. Using dnsmasq as dhcp server lets you push the dns to all network devices including openvpn connected ones.
 
 
 
