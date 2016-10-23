@@ -17,9 +17,11 @@ Install PI-HOLE https://pi-hole.net/
       3. listen-address=127.0.0.1, 10.8.0.1 #needed for above so that dnsmasq listens to queries from vpn network
       
 
-If you want to enable dnscrypt with your pi-hole you can disregard the above 3 steps and follow the guide posted below.
+If you want to enable dnscrypt with your pi-hole:
 
-      1. https://github.com/pi-hole/pi-hole/wiki/DNSCrypt 
+      1. Use this script to install dnsproxy https://github.com/simonclausen/dnscrypt-autoinstall
+      2. Change the default port because it's the same as dnsmasq. sudo vi /etc/systemd/system/dnscrypt-autoinstall.conf
+      3. Change the server value in /etc/dnsmasq.d/01-pihole.conf to the ones listed in the above conf script
 
 
 
