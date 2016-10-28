@@ -19,7 +19,7 @@
   * Edit `listen-address=127.0.0.1` to , `listen-address=127.0.0.1, 10.8.0.1`.
 		* By editing this the DNS server is listening to queries from your network AND your OpenVPN connected devices.
       
-4.	Enabling DNSSEC.
+4.	Enabling DNSSEC. pr
 	1.	Use this [script](https://github.com/simonclausen/dnscrypt-autoinstall) to install DNSproxy 
 		* I suggest using a resolver that supports DNSSEC
 	2.	Edit the DNScrypt daemon configuration file with `sudo nano /etc/systemd/system/dnscrypt-autoinstall.conf`
@@ -30,6 +30,8 @@
 			* `server=127.0.0.1#5353`
 			* `server=127.0.0.2#5353`
 
+5. You can use this [test](https://dnsleaktest.com/) on all your devices to check if your DNS is working properly.
+6. You can use this [test](http://dnssec.vs.uni-due.de/) on all your devices to check if DNSSEC is working properly.
 
 
 
