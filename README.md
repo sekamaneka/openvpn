@@ -1,26 +1,34 @@
-# openvpn
+#openvpn
 
-Set a static IP for Raspbian Jessie: https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update
+1.	Set a static IP for Raspbian Jessie with this [guide](https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update).
 
-Automated script to setup openvpn for Raspbian Jessie: https://github.com/StarshipEngineer/OpenVPN-Setup
-  
-      1.Remove local <IP> line from /etc/openvpn/server.conf
-      2.Remove push "redirect-gateway def1"
-      2.Change port in server.conf and in client.ovpn (OPTIONAL)
-      3.Remove all the push "dhcp-options and enter this: push "dhcp-option DNS 10.8.0.1" to use the dnsmasq 
+2.	Automated [script](https://github.com/StarshipEngineer/OpenVPN-Setup) to setup OpenVPN for Raspbian Jessie.
+	1. Edit OpenVPN server configuration file with `sudo nano /etc/openvpn/server.conf` and remove the following lines:
+		* `push "redirect-gateway def1"`
+		* `local (YOUR_STATIC_IP_SETUP_ABOVE)`
+		* `push "dhcp-options (2 lines)`
+	2. Add this line to the above config to use your DNS Server from OpenVPN connected devices. 
+		* `push "dhcp-option DNS 10.8.0.1"` 
       
-Install PI-HOLE https://pi-hole.net/
-      
-      1. Edit /etc/dnsmasq.d/01-pihole.conf and add/edit 2,3.
-      2. dhcp-range=192.168.0.20,192.168.0.50,72h. Using dnsmasq as dhcp server lets you push the dns to all network devices including openvpn connected ones.
-      3. listen-address=127.0.0.1, 10.8.0.1 #needed for above so that dnsmasq listens to queries from vpn network
+3.	Install PI-HOLE https://pi-hole.net/
+	* Edit dnsmasq configuration file with `sudo nano /etc/dnsmasq.d/01-pihole.conf`
+	* Append `dhcp-range=192.168.0.20,192.168.0.150,72h`. 
+		* To make this work you have to enter your router and disable it's own DHCP server.
+		* By using the dnsmasq as DHCP server your DNS server gets pushed to all devices on the network.
+  * Edit `listen-address=127.0.0.1` to , `listen-address=127.0.0.1, 10.8.0.1` 
+		* By editing this the DNS server is listening to queries from your network AND your OpenVPN connected devices.
       
 
-If you want to enable dnscrypt with your pi-hole:
+4.	Enabling DNSSEC
+	1.	Use this [script](https://github.com/simonclausen/dnscrypt-autoinstall) to install DNSproxy 
+		* You can run this script mltiple times and each time add another DNScrypt resolver.
+		* I suggest using ones that support DNSSEC
+	2.	Edit the DNScrypt daemon configuration file with `sudo nano /etc/systemd/system/dnscrypt-autoinstall.conf`
+		*	Change the port number in all lines similar to `DNSCRYPT_LOCALPORT=53` to `DNSCRYPT_LOCALPORT=<CHOSEN_FREE_PORT>`
+	3.	Edit the dnsmasq configuration files with `sudo nano /etc/dnsmasq.d/01-pihole.conf`
+		* Remove all lines similar to `server=<RANDOM_DNS_SERVER>` 
+		* Add one line for each resolver you added in the first step in the following format: `server=127.0.0.<n>#<CHOSEN_FREE_PORT>` where n is an ascending number from 1 to the number of resolvers you added.
 
-      1. Use this script to install dnsproxy https://github.com/simonclausen/dnscrypt-autoinstall
-      2. Change the default port to something else(I use 5353) because it's the same as dnsmasq. sudo vi /etc/systemd/system/dnscrypt-autoinstall.conf
-      3. Change the server value in /etc/dnsmasq.d/01-pihole.conf to the ones listed in the above conf script
 
 
 
