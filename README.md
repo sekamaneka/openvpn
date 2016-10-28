@@ -21,13 +21,14 @@
 
 4.	Enabling DNSSEC
 	1.	Use this [script](https://github.com/simonclausen/dnscrypt-autoinstall) to install DNSproxy 
-		* You can run this script mltiple times and each time add another DNScrypt resolver.
-		* I suggest using ones that support DNSSEC
+		* I suggest using a resolver that supports DNSSEC
 	2.	Edit the DNScrypt daemon configuration file with `sudo nano /etc/systemd/system/dnscrypt-autoinstall.conf`
-		*	Change the port number in all lines similar to `DNSCRYPT_LOCALPORT=53` to `DNSCRYPT_LOCALPORT=<CHOSEN_FREE_PORT>`
+		*	Change the port `53` in `DNSCRYPT_LOCALPORT=53` and `DNSCRYPT_LOCALPORT=53` to a chosen free port of your choice. Mine is 5353 
 	3.	Edit the dnsmasq configuration files with `sudo nano /etc/dnsmasq.d/01-pihole.conf`
 		* Remove all lines similar to `server=<RANDOM_DNS_SERVER>` 
-		* Add one line for each resolver you added in the first step in the following format: `server=127.0.0.<n>#<CHOSEN_FREE_PORT>` where n is an ascending number from 1 to the number of resolvers you added.
+		* Append following lines:
+			* `server=127.0.0.1:5353`
+			* `server=127.0.0.2:5353`
 
 
 
