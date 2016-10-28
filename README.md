@@ -1,4 +1,5 @@
-#openvpn
+#Securing DNS on the Consumer Level using a Dedicated Home Server and OpenVPN 
+##This guide assumes some basic unix knowledge 
 
 1.	Set a static IP for Raspbian Jessie with this [guide](https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update).
 
