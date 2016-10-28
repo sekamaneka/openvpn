@@ -27,8 +27,8 @@
 	3.	Edit the dnsmasq configuration files with `sudo nano /etc/dnsmasq.d/01-pihole.conf`
 		* Remove all lines similar to `server=<RANDOM_DNS_SERVER>` 
 		* Append following lines:
-			* `server=127.0.0.1:5353`
-			* `server=127.0.0.2:5353`
+			* `server=127.0.0.1#5353`
+			* `server=127.0.0.2#5353`
 
 
 
