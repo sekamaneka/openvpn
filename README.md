@@ -1,8 +1,9 @@
 #Securing DNS on the Consumer Level using a Dedicated Home Server and OpenVPN 
-##This guide should work without modifications on a clean [Raspbian Jessie lite install](https://www.raspberrypi.org/downloads/raspbian/).
+##This guide should work without modifications on a clean [Raspbian Jessie lite install](https://www.raspberrypi.org/downloads/raspbian/) and an IPV4 network.
 ###Related Setup incase of Dynamic Public IP.
 1.	You have to create a hostname for your public IP that updates frequently so you can always access the OpenVPN network. There are a lot of free options you can use. I found [noip's](https://noip.com) update client to be somewhat lacking. I have since then changed to [ddnss.de](https://ddnss.de/) in conjunction with ddclient and it works like a charm.
-2.	As described in Raspberry Pi Setup point 3.2.1 you have to disable the DHCP server in your router at that moment so that dnsmasq can take over.
+2.	As described in Raspberry Pi Setup point 3.2.1 you have to disable the DHCP server in your router at that moment so that dnsmasq can take over. 
+
 ###Raspberry Pi Setup
 1.	Set a static IP for Raspbian Jessie with this [guide](https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update).
 
