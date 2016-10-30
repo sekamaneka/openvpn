@@ -1,3 +1,4 @@
+#Work in Progress. Everything listed till now should work as a whole.
 #Securing DNS on the Consumer Level using a Dedicated Home Server and OpenVPN 
 ##This guide should work without modifications on a clean [Raspbian Jessie lite install](https://www.raspberrypi.org/downloads/raspbian/) and an IPV4 network.
 ###Related Setup
@@ -33,6 +34,8 @@
 		* Append following lines:
 			* `server=127.0.0.1#5353`
 			* `server=127.0.0.2#5353`
+			
+5. 	Using obfsproxy and pluggable transports from the Tor Project to obfuscate vpn traffic #WIP
 
 5. You can use this [test](https://dnsleaktest.com/) on all your devices to check if your DNS is working properly.
 6. You can use this [test](http://dnssec.vs.uni-due.de/) on all your devices to check if DNSSEC is working properly.
